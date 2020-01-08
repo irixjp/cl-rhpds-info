@@ -19,15 +19,15 @@
 (defun stundet-info (student)
   (let ((name
          (multiple-value-bind (q r)
-             (ppcre:scan-to-strings "username: +([a-zA-Z]+[0-9]+)" student)
+             (ppcre:scan-to-strings "username:\\n +([a-zA-Z]+[0-9]+)" student)
            (aref r 0)))
         (password
          (multiple-value-bind (q r)
-             (ppcre:scan-to-strings "password: +([a-zA-Z0-9]+)" student)
+             (ppcre:scan-to-strings "password:\\n +([a-zA-Z0-9]+)" student)
            (aref r 0)))
         (ip_addr
          (multiple-value-bind (q r)
-             (ppcre:scan-to-strings "IP Address: +([0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)" student)
+             (ppcre:scan-to-strings "IP Address:\\n +([0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)" student)
            (aref r 0))))
     (list :name name :password password :ip_addr ip_addr)))
 
